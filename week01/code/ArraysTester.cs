@@ -35,11 +35,9 @@ public static class ArraysTester {
     private static double[] MultiplesOf(double number, int length)
     {
         // TODO Problem 1 Start
-        // 1. Initialize an empty list to store the multiples
-        // 2. Loop from 1 to the specified length
-        // 3. Multiply the starting number by the current iteration index to calculate the multiples
-        // 4. Add each multiple to the list
-        // 5. Return the list of multiples
+        // Remember: Using comments in your program, write down your process for solving this problem
+        // step by step before you write the code. The plan should be clear enough that it could
+        // be implemented by another person.
 
         return new double[0]; // replace this return statement with your own
     }
@@ -55,11 +53,9 @@ public static class ArraysTester {
     private static void RotateListRight(List<int> data, int amount)
     {
         // TODO Problem 2 Start
-        // 1. If the amount is zero or the list is empty, nothing to rotate
-        // 2. Calculate the effective rotation amount by taking the modulus of the amount with the list count
-        // 3. Create a temporary list to store the rotated elements
-        // 4. Copy the last 'rotation' elements to the temporary list
-        // 5. Copy the first 'Count - rotation' elements to the temporary list
-        // 6. Copy the rotated elements back to the original list
+        // Remember: Using comments in your program, write down your process for solving this problem
+        // step by step before you write the code. The plan should be clear enough that it could
+        // be implemented by another person.
+
     }
 }
