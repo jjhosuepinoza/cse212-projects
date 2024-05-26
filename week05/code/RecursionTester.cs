@@ -322,7 +322,5 @@ private static string ReplaceFirst(this string text, char oldChar, char newChar)
         SolveMaze(maze, x, y - 1, currPath);
         SolveMaze(maze, x, y + 1, currPath);
          currPath.RemoveAt(currPath.Count - 1);
-
-    Console.WriteLine(currPath.AsString()); 
     }
 }
