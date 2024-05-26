@@ -146,8 +146,14 @@ public static class RecursionTester {
     /// n &lt;= 0, just return 0.   A loop should not be used.
     /// </summary>
     public static int SumSquaresRecursive(int n) {
-        // TODO Start Problem 1
-        return 0;
+        if (n <= 0)
+        {
+            return 0;
+        }
+        else
+        {
+            return n * n + SumSquaresRecursive(n - 1);
+        }
     }
 
     /// <summary>
@@ -171,6 +177,19 @@ public static class RecursionTester {
     /// </summary>
     public static void PermutationsChoose(string letters, int size, string word = "") {
         // TODO Start Problem 2
+         if (word.Length == size)
+        {
+            Console.WriteLine(word);
+        }
+        else
+        {
+         
+            for (var i = 0; i < letters.Length; i++)
+            {
+               
+                PermutationsChoose(letters.Remove(i, 1), size, word + letters[i]);
+            }
+        }
     }
 
     /// <summary>
@@ -220,6 +239,15 @@ public static class RecursionTester {
     /// </summary>
     public static decimal CountWaysToClimb(int s, Dictionary<int, decimal>? remember = null) {
         // Base Cases
+        if (remember == null)
+        {
+            remember = new Dictionary<int, decimal>();
+        }
+
+        if (remember.ContainsKey(s))
+        {
+            return remember[s];
+        }
         if (s == 0)
             return 0;
         if (s == 1)
@@ -248,9 +276,25 @@ public static class RecursionTester {
     /// some of the string functions like IndexOf and [..X] / [X..] to be useful in solving this problem.
     /// </summary>
     public static void WildcardBinary(string pattern) {
-        // TODO Start Problem 4
-    }
+          if (pattern.IndexOf('*') == -1)
+        {
+           
+            Console.WriteLine(pattern);
+            return;
+        }
 
+        WildcardBinary(pattern.ReplaceFirst('*', '0'));
+        WildcardBinary(pattern.ReplaceFirst('*', '1'));
+    }
+private static string ReplaceFirst(this string text, char oldChar, char newChar)
+    {
+        int pos = text.IndexOf(oldChar);
+        if (pos == -1)
+        {
+            return text;
+        }
+        return text.Substring(0, pos) + newChar + text.Substring(pos + 1);
+    }
     /// <summary>
     /// Use recursion to Print all paths that start at (0,0) and end at the
     /// 'end' square.
@@ -263,9 +307,22 @@ public static class RecursionTester {
 
         // currPath.Add((1,2)); // Use this syntax to add to the current path
 
-        // TODO Start Problem 5
-        // ADD CODE HERE
+      if(!maze.IsValidMove(currPath, x, y)){
+            return;
+        }
 
-        // Console.WriteLine(currPath.AsString()); // Use this to print out your path when you find the solution
+        currPath.Add((x,y));
+
+        if(maze.IsEnd(x, y)){
+            Console.WriteLine(currPath.AsString()); // Use this to print out your path when you find the solution
+        }
+
+        SolveMaze(maze, x + 1, y, currPath);
+        SolveMaze(maze, x - 1, y, currPath);
+        SolveMaze(maze, x, y - 1, currPath);
+        SolveMaze(maze, x, y + 1, currPath);
+         currPath.RemoveAt(currPath.Count - 1);
+
+    Console.WriteLine(currPath.AsString()); 
     }
 }
